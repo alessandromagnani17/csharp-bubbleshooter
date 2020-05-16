@@ -1,9 +1,9 @@
 # README #
- Repository containg some classes of BubbleShooter project written in C#.
+ Repository with some classes of BubbleShooter project written in C#.
 
-Credits:
+## Credits:
 
-Acampora Andrea
-Accursi Giacomo
-Magnani Alessandro
-Montanari Simone
+* Acampora Andrea
+* Accursi Giacomo
+* Magnani Alessandro
+* Montanari Simone
