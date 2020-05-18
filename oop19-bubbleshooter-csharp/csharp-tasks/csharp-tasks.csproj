@@ -39,13 +39,11 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Acampora Andrea\Component.cs" />
+        <Compile Include="Accursi Giacomo\Prova.cs" />
+        <Compile Include="Magnani Alessandro\Prova.cs" />
+        <Compile Include="Montanari Simone\Prova.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Accursi Giacomo" />
-      <Folder Include="Magnani Alessandro" />
-      <Folder Include="Montanari Simone" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

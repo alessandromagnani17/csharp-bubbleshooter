@@ -42,14 +42,11 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Tests.cs" />
+        <Compile Include="Acampora Andrea\Test.cs" />
+        <Compile Include="Accursi Giacomo\Test.cs" />
+        <Compile Include="Magnani Alessandro\Test.cs" />
+        <Compile Include="Montanari Simone\Test.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Acampora Andrea" />
-      <Folder Include="Accursi Giacomo" />
-      <Folder Include="Magnani Alessandro" />
-      <Folder Include="Montanari Simone" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

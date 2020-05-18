@@ -1,7 +1,6 @@
-﻿using System;
 using NUnit.Framework;
 
-namespace UnitTest
+namespace UnitTest.Magnani_Alessandro
 {
     [TestFixture]
     public class Tests
