@@ -38,7 +38,13 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Acampora Andrea\Component.cs" />
+        <Compile Include="Acampora Andrea\AbstractComponent.cs" />
+        <Compile Include="Acampora Andrea\BubbleType.cs" />
+        <Compile Include="Acampora Andrea\CollisionComponent.cs" />
+        <Compile Include="Acampora Andrea\ComponentType.cs" />
+        <Compile Include="Acampora Andrea\IBubble.cs" />
+        <Compile Include="Acampora Andrea\IComponent.cs" />
+        <Compile Include="Acampora Andrea\ShootingComponent.cs" />
         <Compile Include="Accursi Giacomo\Prova.cs" />
         <Compile Include="Magnani Alessandro\Prova.cs" />
         <Compile Include="Montanari Simone\Prova.cs" />
