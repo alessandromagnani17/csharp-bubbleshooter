@@ -4,7 +4,7 @@ namespace csharp_tasks.Accursi_Giacomo.Level
     {
         void Start();
 
-        void Update();
+        void Update(double elapsed);
 
         BubblesManager GetBubblesManager();
 
