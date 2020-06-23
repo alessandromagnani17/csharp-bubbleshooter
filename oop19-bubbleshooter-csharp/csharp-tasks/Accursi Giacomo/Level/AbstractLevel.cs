@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
+using csharp_tasks.Acampora_Andrea;
 
 namespace csharp_tasks.Accursi_Giacomo.Level
 {
@@ -13,33 +16,34 @@ namespace csharp_tasks.Accursi_Giacomo.Level
         private static readonly int MILLISECONDS_IN_A_SECOND = 1000; 
         private static readonly Point2D ShootingBubblePosition = new Point2D(WORLD_WIDTH / 2, WORLD_HEIGHT / 1.10); 
         private static readonly Point2d SwitchBubblePosition = new Point2D(WORLD_WIDTH / 2, WORLD_HEIGHT / 1.10);
-        
-        
-        private readonly BubblesManager bubblesManager;
-        private readonly BubbleGridManager bubbleGridManager;
-        private readonly BubbleGridHelper bubbleGridHelper;
-        private readonly CollisionController collisionController;
-        private readonly GameData gameData;
-        private readonly GameOverChecker gameOverChecker;
-        private readonly BubbleFactory bubbleFactory;
-        private GameStatus status;
-        private LevelType currentGameType;
 
-        public BasicLevel(BubblesManager bubblesManager, BubbleGridManager bubbleGridManager, BubbleGridHelper bubbleGridHelper, CollisionController collisionController, GameData gameData, GameOverChecker gameOverChecker, BubbleFactory bubbleFactory, GameStatus status)
+
+        private BubblesManager bubblesManager { get;}
+        private BubbleGridManager BubbleGridManager { get; }
+        private  BubbleGridHelper BubbleGridHelper { get; }
+        private  CollisionController CollisionController { get; }
+        private  GameData GameData { get; }
+        private  GameOverChecker GameOverChecker { get; }
+        private  BubbleFactory BubbleFactory { get; }
+        private GameStatus Status { get; set;}
+        
+        private LevelType CurrentGameType { get; set;}
+
+        public AbstractLevel(BubblesManager bubblesManager, BubbleGridManager bubbleGridManager, BubbleGridHelper bubbleGridHelper, CollisionController collisionController, GameData gameData, GameOverChecker gameOverChecker, BubbleFactory bubbleFactory, GameStatus status)
         {
             this.bubblesManager = bubblesManager;
-            this.bubbleGridManager = bubbleGridManager;
-            this.bubbleGridHelper = bubbleGridHelper;
-            this.collisionController = collisionController;
-            this.gameData = gameData;
-            this.gameOverChecker = gameOverChecker;
-            this.bubbleFactory = bubbleFactory;
-            this.status = status;
+            this.BubbleGridManager = bubbleGridManager;
+            this.BubbleGridHelper = bubbleGridHelper;
+            this.CollisionController = collisionController;
+            this.GameData = gameData;
+            this.GameOverChecker = gameOverChecker;
+            this.BubbleFactory = bubbleFactory;
+            this.Status = status;
         }
 
         public void Start()
         {
-            this.status = new GameStatus().RUNNING;
+            this.Status = new GameStatus().RUNNING;
             this.InitBubbles(); 
         }
 
@@ -53,14 +57,14 @@ namespace csharp_tasks.Accursi_Giacomo.Level
 
         private void CreateNewRow()
         {
-            this.bubblesManager.AddBubbles(this.bubbleGridHelper.CreateNewRow(NumBubblePerRow)); 
+            this.bubblesManager.AddBubbles(this.BubbleGridHelper.CreateNewRow(NumBubblePerRow)); 
         }
 
         public void Update(double elapsed)
         {
             this.bubblesManager.Update(elapsed);
-            this.collisionController.CheckCollision();
-            this.gameData.UpdateGameTime(elapsed);
+            this.CollisionController.CheckCollision();
+            this.GameData.UpdateGameTime(elapsed);
             this.UpdateScore(elapsed / MILLISECONDS_IN_A_SECOND);
             if (this.isTimeToNewRow(elapsed / MILLISECONDS_IN_A_SECOND))
             {
@@ -75,52 +79,36 @@ namespace csharp_tasks.Accursi_Giacomo.Level
 
         public void LoadShootingBubble()
         {
-            if (this.bubblesManager.SwitchBubble)
+            if (this.bubblesManager.ShootingBubble is { })
+            {
+                IBubble shootingBubble = this.bubblesManager.ShootingBubble; 
+                shootingBubble.Position = ShootingBubblePosition;
+                shootingBubble.Direction = shootingBubble.Position;
+                shootingBubble.Color = this.bubblesManager.ShootingBubble.Color;
+            }
+            else
+            {
+               this.bubblesManager.AddBubbles(new List<IBubble>(this.BubbleFactory.createShootingBubble(ShootingBubblePosition, BubbleColor.RandomColor))); 
+            }
         }
+        
+        
 
         public void LoadSwitchBubble()
         {
-            throw new System.NotImplementedException();
+            if (this.bubblesManager.SwitchBubble is { })
+            {
+                Random rand = new Random(); 
+                IBubble switchBubble = this.bubblesManager.SwitchBubble;
+                switchBubble.Position = SwitchBubblePosition;
+                switchBubble.Color =
+                    this.BubbleGridHelper.RemaingColors[rand.Next(this.BubbleGridHelper.RemaingColors.Count - 1)]; 
+            }
+            else
+            {
+                this.bubblesManager.AddBubbles(new List<IBubble>(this.BubbleFactory.createSwitchBubble(SwitchBubblePosition, BubbleColor.RandomColor))); 
+            }
         }
-
-        public void SetLevelType(LevelType levelType)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetGameStatus(GameStatus status)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public BubbleGridManager GetGridManager()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public BubbleGridHelper GetGridHelper()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public CollisionController GetCollisionController()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public GameData GetGameData()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public LevelType GetLevelType()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public BubbleFactory GetBubbleFactory()
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

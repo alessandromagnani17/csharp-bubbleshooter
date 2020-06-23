@@ -1,5 +1,6 @@
 #nullable enable
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using csharp_tasks.Acampora_Andrea;
@@ -30,6 +31,7 @@ namespace csharp_tasks.Accursi_Giacomo
         public IBubble? ShootingBubble
         {
             get
+            
             {
                 IBubble? shootingBubble = this.bubbles.AsEnumerable().First(a => a.GetType().Equals(BubbleType.ShootingBubble));
                 return shootingBubble; 
