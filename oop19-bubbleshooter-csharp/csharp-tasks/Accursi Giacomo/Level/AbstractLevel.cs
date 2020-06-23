@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using System.Runtime.CompilerServices;
 using csharp_tasks.Acampora_Andrea;
 
 namespace csharp_tasks.Accursi_Giacomo.Level
@@ -18,27 +16,28 @@ namespace csharp_tasks.Accursi_Giacomo.Level
         private static readonly Point2d SwitchBubblePosition = new Point2D(WORLD_WIDTH / 2, WORLD_HEIGHT / 1.10);
 
 
-        private BubblesManager bubblesManager { get;}
+        private BubblesManager BubblesManager { get;}
         private BubbleGridManager BubbleGridManager { get; }
-        private  BubbleGridHelper BubbleGridHelper { get; }
-        private  CollisionController CollisionController { get; }
-        private  GameData GameData { get; }
-        private  GameOverChecker GameOverChecker { get; }
-        private  BubbleFactory BubbleFactory { get; }
+        private BubbleGridHelper BubbleGridHelper { get; }
+        private CollisionController CollisionController { get; }
+        private GameData GameData { get; }
+        
+        private GameOverChecker GameOverChecker; 
+        private BubbleFactory BubbleFactory { get; }
         private GameStatus Status { get; set;}
         
         private LevelType CurrentGameType { get; set;}
 
-        public AbstractLevel(BubblesManager bubblesManager, BubbleGridManager bubbleGridManager, BubbleGridHelper bubbleGridHelper, CollisionController collisionController, GameData gameData, GameOverChecker gameOverChecker, BubbleFactory bubbleFactory, GameStatus status)
+        public AbstractLevel()
         {
-            this.bubblesManager = bubblesManager;
-            this.BubbleGridManager = bubbleGridManager;
-            this.BubbleGridHelper = bubbleGridHelper;
-            this.CollisionController = collisionController;
-            this.GameData = gameData;
-            this.GameOverChecker = gameOverChecker;
-            this.BubbleFactory = bubbleFactory;
-            this.Status = status;
+            this.BubblesManager = new BubblesManager();
+            this.BubbleGridManager = new BubbleGridManager();
+            this.BubbleGridHelper = new BubbleGridHelper();
+            this.CollisionController = new CollisionController();
+            this.GameData = new GameData();
+            this.GameOverChecker = new GameOverChecker();
+            this.BubbleFactory = new BubbleFactory();
+            this.Status = new GameStatus.PAUSE; 
         }
 
         public void Start()
@@ -109,6 +108,17 @@ namespace csharp_tasks.Accursi_Giacomo.Level
                 this.bubblesManager.AddBubbles(new List<IBubble>(this.BubbleFactory.createSwitchBubble(SwitchBubblePosition, BubbleColor.RandomColor))); 
             }
         }
+
+        private bool CheckGameOver()
+        {
+            return this.GameOverChecker.checkGameOver(); 
+        }
+
+        protected abstract bool IsTimeToNewRow(); 
+        protected abstract void UpdateScore(); 
+        protected abstract bool CheckVictory(); 
         
+        
+
     }
 }

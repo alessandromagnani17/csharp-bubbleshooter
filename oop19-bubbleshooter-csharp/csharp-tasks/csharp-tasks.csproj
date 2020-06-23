@@ -47,12 +47,12 @@
         <Compile Include="Acampora Andrea\IBubble.cs" />
         <Compile Include="Acampora Andrea\IComponent.cs" />
         <Compile Include="Acampora Andrea\ShootingComponent.cs" />
+        <Compile Include="Accursi Giacomo\BubbleFactory.cs" />
+        <Compile Include="Accursi Giacomo\BubbleGridManager.cs" />
         <Compile Include="Accursi Giacomo\BubblesManager.cs" />
         <Compile Include="Accursi Giacomo\Level\AbstractLevel.cs" />
-        <Compile Include="Accursi Giacomo\Level\BasicLevel.cs" />
         <Compile Include="Accursi Giacomo\Level\ILevel.cs" />
         <Compile Include="Accursi Giacomo\Level\LevelType.cs" />
-        <Compile Include="Accursi Giacomo\Level\SurvivalLevel.cs" />
         <Compile Include="Magnani Alessandro\Prova.cs" />
         <Compile Include="Montanari Simone\Prova.cs" />
         <Compile Include="Program.cs" />
