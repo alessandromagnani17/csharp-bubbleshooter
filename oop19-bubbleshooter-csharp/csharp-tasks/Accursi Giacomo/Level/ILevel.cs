@@ -10,5 +10,11 @@ namespace csharp_tasks.Accursi_Giacomo.Level
 
         void LoadSwitchBubble();
         
+        BubbleFactory BubbleFactory { get;}
+        
+        BubblesManager BubblesManager { get; }
+        
+        
+        
     }
 }
