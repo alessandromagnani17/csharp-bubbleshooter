@@ -15,7 +15,6 @@ namespace UnitTest.Magnani_Alessandro
          * Method to test if {@link GameOverChecker} launch a GameOver
          * to the basic mode.
          */
-        
         [TestMethod]
         public void TestBasicGameOver() {
             GameOverChecker gameOverChecker = new GameOverChecker(this.basicMode);
@@ -27,7 +26,6 @@ namespace UnitTest.Magnani_Alessandro
          * Method to test if {@link GameOverChecker} launch a GameOver
          * to the survival mode.
          */
-        
         [TestMethod]
         public void TestSurvivalGameOver() {
             GameOverChecker gameOverChecker = new GameOverChecker(this.survivalMode);
