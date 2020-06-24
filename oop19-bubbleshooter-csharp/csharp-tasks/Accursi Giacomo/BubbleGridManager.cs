@@ -9,7 +9,7 @@ namespace csharp_tasks.Accursi_Giacomo
     {
         private int CreatedRows { get; set; } 
         private bool OffSetRow { get; set; }
-        private ILevel Level;
+        private readonly ILevel Level;
 
         public BubbleGridManager(ILevel level)
         {
@@ -21,11 +21,11 @@ namespace csharp_tasks.Accursi_Giacomo
         public List<IBubble> CreateNewRow(int bubblesPerRow)
         {
             List<IBubble> newRow = new List<IBubble>();
-            double offset = this.OffSetRow ? Ibubble.WIDTH : Ibubble.RADIUS; //da sistemare, non si possono assegnare campi statici ad una interfaccia
+            double offset = this.OffSetRow ? Ibubble.Width : Ibubble.Radius;
             this.MoveDownBubbles();
             for (int x = 0; x < bubblesPerRow; x++)
             {
-                newRow.Add(this.Level.BubbleFactory.CreateGridBubble(new Point2D(x * IBubble.WIDTH + offset, Ibubble.RADIUS)));
+                newRow.Add(this.Level.BubbleFactory.CreateGridBubble(new Point2D(x * IBubble.Width + offset, Ibubble.Radius)));
             }
 
             this.CreatedRows++;
@@ -38,8 +38,17 @@ namespace csharp_tasks.Accursi_Giacomo
         {
             foreach (IBubble bubble in this.GetBubbleGrid().AsEnumerable())
             {
-                bubble.SetPosition(new Point2D(bubble.));
+                bubble.SetPosition(new Point2D(bubble.Position.X, bubble.Position.Y + bubble.Width));
             }
+        }
+
+        public IBubble AddToGrid(IBubble bubble, Point2D position)
+        {
+            IBubble bubbleToAdd = this.Level.BubbleFactory.CreateGridBubble(position, bubble.Color); 
+            this.Level.BubblesManager.AddBubbles(new List<IBubble>(){bubbleToAdd});
+            this.Level.LoadShootingBubble();
+            this.Level.LoadSwitchBubble();
+            return bubbleToAdd; 
         }
 
         private List<IBubble> GetBubbleGrid()

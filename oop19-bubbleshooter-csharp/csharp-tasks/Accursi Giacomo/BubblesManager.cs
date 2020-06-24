@@ -1,6 +1,4 @@
 #nullable enable
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using csharp_tasks.Acampora_Andrea;
@@ -19,42 +17,38 @@ namespace csharp_tasks.Accursi_Giacomo
         public void Update(double elapsed)
         {
             this.ShootingBubble?.Update(elapsed);
-            this.bubbles.RemoveAll(a => a.IsDestroyed()); 
-
+            this.bubbles.RemoveAll(a => a.IsDestroyed());
         }
 
         public void AddBubbles(List<IBubble> bubblesList)
         {
             this.bubbles.AddRange(bubblesList);
         }
-        
+
         public IBubble? ShootingBubble
         {
             get
-            
+
             {
-                IBubble? shootingBubble = this.bubbles.AsEnumerable().First(a => a.GetType().Equals(BubbleType.ShootingBubble));
-                return shootingBubble; 
+                IBubble? shootingBubble = this.bubbles.AsEnumerable()
+                    .First(a => a.GetType().Equals(BubbleType.ShootingBubble));
+                return shootingBubble;
             }
-            
         }
-        
+
         public IBubble? SwitchBubble
         {
             get
             {
-                IBubble? switchBubble = this.bubbles.AsEnumerable().First(a => a.GetType().Equals(BubbleType.SwitchBubble));
-                return switchBubble;  
+                IBubble? switchBubble =
+                    this.bubbles.AsEnumerable().First(a => a.GetType().Equals(BubbleType.SwitchBubble));
+                return switchBubble;
             }
-             
         }
-        
+
         public List<IBubble> BubbleGrid
         {
-            get
-            {
-                return this.bubbles.AsEnumerable().Where(a => a.GetType().Equals(BubbleType.GridBubble)).ToList();
-            }
+            get { return this.bubbles.AsEnumerable().Where(a => a.GetType().Equals(BubbleType.GridBubble)).ToList(); }
         }
 
         public List<IBubble> AllBubbles => bubbles;

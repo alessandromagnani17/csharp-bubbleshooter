@@ -8,118 +8,111 @@ namespace csharp_tasks.Accursi_Giacomo.Level
     {
         private const int NumBubblePerRow = 19;
         private const int NumRows = 8; 
+
+        private const int MillisecondsInASecond = 1000;
+        private static readonly Point2D ShootingBubblePosition = new Point2D(IModel.WorldWidth / 2, IModel.WorldHeight / 1.10);
+        private static readonly Point2D SwitchBubblePosition = new Point2D(IModel.WorldWidth / 2, IModel.WorldHeight  / 1.10);
         
-
-
-        private static readonly int MILLISECONDS_IN_A_SECOND = 1000; 
-        private static readonly Point2D ShootingBubblePosition = new Point2D(WORLD_WIDTH / 2, WORLD_HEIGHT / 1.10); 
-        private static readonly Point2D SwitchBubblePosition = new Point2D(WORLD_WIDTH / 2, WORLD_HEIGHT / 1.10);
-
-
-        private BubblesManager BubblesManager;
-        private BubbleGridManager BubbleGridManager { get; }
-        private BubbleGridHelper BubbleGridHelper { get; }
-        private CollisionController CollisionController { get; }
-        private GameData GameData { get; }
-        
-        private GameOverChecker GameOverChecker;
-
-        private BubbleFactory BubbleFactory; 
-        private GameStatus Status { get; set;}
-        
-        private LevelType CurrentGameType { get; set;}
+        public BubbleGridHelper BubbleGridHelper { get; }
+        public BubbleFactory BubbleFactory { get; }
+        public BubblesManager BubblesManager { get; }
+        public BubbleGridManager BubbleGridManager { get; }
+        public CollisionController CollisionController { get; }
+        public GameData GameData { get; }
+        public GameStatus Status { get; set; }
+        public LevelType LevelType { get; set; }
+        private GameOverChecker gameOverChecker; 
 
         public AbstractLevel()
         {
             this.BubblesManager = new BubblesManager();
+            this.BubbleFactory = new BubbleFactory();
             this.BubbleGridManager = new BubbleGridManager(this);
             this.BubbleGridHelper = new BubbleGridHelper(this.BubblesManager);
             this.CollisionController = new CollisionController(this);
             this.GameData = new GameData();
-            this.GameOverChecker = new GameOverChecker(this);
-            this.BubbleFactory = new BubbleFactory();
-            this.Status = new GameStatus.PAUSE; 
+            this.gameOverChecker = new GameOverChecker(this);
+            this.Status = GameStatus.Pause;
+
+        }
+        
+        public void Update(double elapsed)
+        {
+            this.BubblesManager.Update(elapsed);
+            this.CollisionController.CheckCollision();
+            this.GameData.UpdateGameTime(elapsed);
+            this.UpdateScore(elapsed / MillisecondsInASecond);
+            if (this.IsTimeToNewRow(elapsed / MillisecondsInASecond))
+            {
+                this.CreateNewRow();
+            }
+
+            if (this.CheckGameOver() || CheckVictory())
+            {
+                this.Status = GameStatus.GameOver; 
+            }
         }
 
         public void Start()
         {
-            this.Status = new GameStatus().RUNNING;
-            this.InitBubbles(); 
+            this.Status = GameStatus.Running;
+            this.InitBubbles();
         }
 
         private void InitBubbles()
         {
             for (int i = 0; i < NumRows; i++)
             {
-                this.CreateNewRow(); 
+                this.CreateNewRow();
             }
         }
 
         private void CreateNewRow()
         {
-            this.bubblesManager.AddBubbles(this.BubbleGridHelper.CreateNewRow(NumBubblePerRow)); 
-        }
-
-        public void Update(double elapsed)
-        {
-            this.bubblesManager.Update(elapsed);
-            this.CollisionController.CheckCollision();
-            this.GameData.UpdateGameTime(elapsed);
-            this.UpdateScore(elapsed / MILLISECONDS_IN_A_SECOND);
-            if (this.isTimeToNewRow(elapsed / MILLISECONDS_IN_A_SECOND))
-            {
-                this.CreateNewRow();
-            }
-        }
-
-        public BubblesManager GetBubblesManager()
-        {
-            throw new System.NotImplementedException();
+            this.BubblesManager.AddBubbles(this.BubbleGridHelper.CreateNewRow(NumBubblePerRow));
         }
 
         public void LoadShootingBubble()
         {
-            if (this.bubblesManager.ShootingBubble is { })
+            if (this.BubblesManager.ShootingBubble != null)
             {
-                IBubble shootingBubble = this.bubblesManager.ShootingBubble; 
+                IBubble shootingBubble = this.BubblesManager.ShootingBubble;
                 shootingBubble.Position = ShootingBubblePosition;
                 shootingBubble.Direction = shootingBubble.Position;
-                shootingBubble.Color = this.bubblesManager.ShootingBubble.Color;
+                shootingBubble.Color = this.BubblesManager.ShootingBubble.Color;
             }
             else
             {
-               this.bubblesManager.AddBubbles(new List<IBubble>(this.BubbleFactory.createShootingBubble(ShootingBubblePosition, BubbleColor.RandomColor))); 
+                this.BubblesManager.AddBubbles(new List<IBubble>(
+                    this.BubbleFactory.CreateShootingBubble(ShootingBubblePosition, BubbleColor.RandomColor)));
             }
         }
-        
-        
+
 
         public void LoadSwitchBubble()
         {
-            if (this.bubblesManager.SwitchBubble is { })
+            if (this.BubblesManager.SwitchBubble != null)
             {
-                Random rand = new Random(); 
-                IBubble switchBubble = this.bubblesManager.SwitchBubble;
+                Random rand = new Random();
+                IBubble switchBubble = this.BubblesManager.SwitchBubble;
                 switchBubble.Position = SwitchBubblePosition;
                 switchBubble.Color =
-                    this.BubbleGridHelper.RemaingColors[rand.Next(this.BubbleGridHelper.RemaingColors.Count - 1)]; 
+                    this.BubbleGridHelper.RemaingColors[rand.Next(this.BubbleGridHelper.RemaingColors.Count - 1)];
             }
             else
             {
-                this.bubblesManager.AddBubbles(new List<IBubble>(this.BubbleFactory.createSwitchBubble(SwitchBubblePosition, BubbleColor.RandomColor))); 
+                this.BubblesManager.AddBubbles(new List<IBubble>(
+                    this.BubbleFactory.CreateSwitchBubble(SwitchBubblePosition, BubbleColor.RandomColor)));
             }
         }
 
         private bool CheckGameOver()
         {
-            return this.GameOverChecker.checkGameOver(); 
+            return this.gameOverChecker.CheckGameOver(); 
         }
 
-        protected abstract bool IsTimeToNewRow(); 
-        protected abstract void UpdateScore(); 
-        protected abstract bool CheckVictory(); 
-        
-        
-
+        protected abstract bool IsTimeToNewRow(double elapsed);
+        protected abstract void UpdateScore(double elapsed);
+        protected abstract bool CheckVictory();
     }
 }

@@ -11,12 +11,12 @@ namespace csharp_tasks.Accursi_Giacomo
         
         public IBubble CreateShootingBubble(Point2D position, BubbleColor color)
         {
-            return new GridBubble(position, color); 
+            return new ShootingBubble(position, color); 
         }
         
         public IBubble CreateSwitchBubble(Point2D position, BubbleColor color)
         {
-            return new GridBubble(position, color); 
+            return new SwitchBubble(position, color); 
         }
     }
 }
