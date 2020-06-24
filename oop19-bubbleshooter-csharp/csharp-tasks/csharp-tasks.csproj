@@ -60,6 +60,7 @@
     <Compile Include="Accursi Giacomo\Point2D.cs" />
     <Compile Include="Magnani Alessandro\Cannon\Cannon.cs" />
     <Compile Include="Magnani Alessandro\Cannon\DrawCannon.cs" />
+    <Compile Include="Magnani Alessandro\HandlerAdapterMouseMoved.cs" />
     <Compile Include="Magnani Alessandro\SwitchBubble.cs" />
     <Compile Include="Magnani Alessandro\SwitcherController.cs" />
     <Compile Include="Montanari Simone\DrawHelpLine.cs" />
