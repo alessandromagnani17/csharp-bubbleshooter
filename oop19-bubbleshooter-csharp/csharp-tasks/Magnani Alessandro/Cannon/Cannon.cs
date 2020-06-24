@@ -13,7 +13,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
      * 
      * @param img , the image of Cannon.
      */
-        public Cannon(readonly Image img) 
+        public Cannon(Image img) 
         {
             this.imageCannon = new ImageView(img);
         }
@@ -40,7 +40,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
      * Method to set the angle of {@link Cannon} rotation.
      * @param angle , the angle of {@link Cannon}.
      */
-        public readonly void SetAngle(readonly double angle) 
+        public readonly void SetAngle(double angle) 
         {
             this.angle = angle;
         }

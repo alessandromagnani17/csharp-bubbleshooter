@@ -9,7 +9,7 @@ namespace csharp_tasks.Magnani_Alessandro
          * @param position The position in the game.
          * @param color    The {@link BubbleColor} of the bubble.
          */
-        public SwitchBubble(readonly Point position, readonly BubbleColor color) : base(BubbleType.SWITCH_BUBBLE, position, color) 
+        public SwitchBubble(Point position, BubbleColor color) : base(BubbleType.SWITCH_BUBBLE, position, color) 
         {
         }
 
