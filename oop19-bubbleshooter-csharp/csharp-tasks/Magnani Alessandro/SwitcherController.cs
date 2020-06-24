@@ -15,7 +15,7 @@ namespace csharp_tasks.Magnani_Alessandro
          * 
          * @param bubbles , the list of all {@link Bubble}s.
          */
-        public SwitcherController(readonly List<Bubble> bubbles) {
+        public SwitcherController(List<Bubble> bubbles) {
             this.bubbles = bubbles;
             this.bubbleSwitcher = new BubbleSwitcher(this.bubbles);
             this.SetInitialNumSwitch();
@@ -35,7 +35,7 @@ namespace csharp_tasks.Magnani_Alessandro
          * Method to set the number of switches already made.
          * @param numSwitch , the number of switches already made.
          */
-        public readonly void SetNumSwitch(readonly double numSwitch) {
+        public readonly void SetNumSwitch(double numSwitch) {
             this.numSwitch = numSwitch;
         }
 
@@ -65,7 +65,7 @@ namespace csharp_tasks.Magnani_Alessandro
          * Method to set the list of all {@link Bubble}s.
          * @param bubbles , the list of all {@link Bubble}s.
          */
-        public readonly void SetBubbles(readonly List<Bubble> bubbles) {
+        public readonly void SetBubbles(List<Bubble> bubbles) {
             this.bubbles = bubbles;
             this.bubbleSwitcher = new BubbleSwitcher(this.bubbles);
         }

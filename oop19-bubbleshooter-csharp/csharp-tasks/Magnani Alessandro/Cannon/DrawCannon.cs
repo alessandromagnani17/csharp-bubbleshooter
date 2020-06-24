@@ -23,8 +23,8 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
      * <param name="shootingBubblePosition">the position of {@link ShootingBubble}.</param>
      * <param name="shootingBubbleRadius">the radius of {@link ShootingBubble}.</param>
      */
-    public DrawCannon(readonly AnchorPane pane; readonly Cannon cannon, readonly Controller controller,
-        readonly Point shootingBubblePosition, readonly double shootingBubbleRadius) 
+    public DrawCannon(AnchorPane pane; readonly Cannon cannon, Controller controller,
+        readonly Point shootingBubblePosition,  double shootingBubbleRadius) 
         {
         this.cannon = cannon;
         this.controller = controller;
