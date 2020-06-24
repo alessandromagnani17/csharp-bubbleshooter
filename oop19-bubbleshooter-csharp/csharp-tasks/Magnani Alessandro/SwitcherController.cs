@@ -25,7 +25,7 @@ namespace csharp_tasks.Magnani_Alessandro
         /**
          * Method to recall the switch of the {@link Bubble}s if the switch limit has not been exceeded.
          */
-        public readonly void SwitchControl()
+        public void SwitchControl()
         {
             if (!IsSwitchEnd()) {
                 this.IncreasesNumSwitch();
