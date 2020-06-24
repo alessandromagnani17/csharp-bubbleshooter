@@ -1,4 +1,8 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.ObjectModel;
+using System.Linq;
+using csharp_tasks.Accursi_Giacomo.Level;
+using csharp_tasks.Montanari_Simone;
+using NUnit.Framework;
 
 namespace UnitTest.Montanari_Simone
 {
@@ -7,10 +11,10 @@ namespace UnitTest.Montanari_Simone
     public class TestHighscore 
     {
 
-      private readonly HighscoreStore highscoreStore = new HighscoreStoreImpl();
+      private readonly IHighscoreStore highscoreStore = new HighscoreStoreImpl();
       private static readonly int POINTS = 500;
       private static readonly int LIMIT = 10;
-      private static readonly String PLAYER = "Player";
+      private static readonly string PLAYER = "Player";
       private readonly ObservableCollection<HighscoreStructure> rightList = new ObservableCollection<HighscoreStructure>();
       private readonly ObservableCollection<HighscoreStructure> scoreList = new ObservableCollection<HighscoreStructure>();
 
@@ -26,7 +30,7 @@ namespace UnitTest.Montanari_Simone
 
           this.rightList.Add(new HighscoreStructure(PLAYER, POINTS, LevelType.BasicMode));
 
-          Assert.IsTrue(this.rightList[0].name.Equals(this.scoreList[0].name),
+          Assert.IsTrue(this.rightList[0].Name.Equals(this.scoreList[0].Name),
                           "Error in name comparison!");
           Assert.AreEqual(this.rightList[0].theScore, this.scoreList[0].theScore, 
                           "Error in score comparison!");
@@ -47,7 +51,7 @@ namespace UnitTest.Montanari_Simone
 
           this.rightList.Add(new HighscoreStructure(PLAYER, POINTS, LevelType.SurvivalMode));
 
-          Assert.IsTrue(this.rightList[0].name.Equals(this.scoreList[0].name),
+          Assert.IsTrue(this.rightList[0].Name.Equals(this.scoreList[0].Name),
               "Error in name comparison!");
           Assert.AreEqual(this.rightList[0].theScore, this.scoreList[0].theScore, 
               "Error in score comparison!");
@@ -76,7 +80,7 @@ namespace UnitTest.Montanari_Simone
 
           for (int i = 0; i < this.rightList.Count; i += 1)
           { 
-              Assert.IsTrue(this.rightList[i].name.Equals(this.scoreList[i].name),
+              Assert.IsTrue(this.rightList[i].Name.Equals(this.scoreList[i].Name),
                                 "Error in name comparison!");
               Assert.AreEqual(this.rightList[i].theScore, this.scoreList[i].theScore, 
                                 "Error in score comparison!");
@@ -106,7 +110,7 @@ namespace UnitTest.Montanari_Simone
 
           for (int i = 0; i < this.rightList.Count; i += 1)
           { 
-              Assert.IsTrue(this.rightList[i].name.Equals(this.scoreList[i].name),
+              Assert.IsTrue(this.rightList[i].Name.Equals(this.scoreList[i].Name),
                   "Error in name comparison!");
               Assert.AreEqual(this.rightList[i].theScore, this.scoreList[i].theScore, 
                   "Error in score comparison!");

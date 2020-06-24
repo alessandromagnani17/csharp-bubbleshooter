@@ -49,6 +49,12 @@
     <Compile Include="Montanari Simone\TestHighscore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\csharp-tasks\csharp-tasks.csproj">
+      <Project>{78aa49a9-f0c8-4a8b-ab2a-34a09b127427}</Project>
+      <Name>csharp-tasks</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

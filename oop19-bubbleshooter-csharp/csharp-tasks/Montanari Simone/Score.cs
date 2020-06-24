@@ -8,7 +8,7 @@ namespace csharp_tasks.Montanari_Simone
     public class Score
     {
 
-        private int theScore { get; }
+        public int theScore { get; }
         LevelType level { get; }
 
         /// <summary>Constructor for a new score specifying the modality.</summary>
