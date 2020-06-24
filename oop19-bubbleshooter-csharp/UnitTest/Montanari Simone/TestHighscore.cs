@@ -26,8 +26,10 @@ namespace UnitTest.Montanari_Simone
 
           this.rightList.Add(new HighscoreStructure(PLAYER, POINTS, LevelType.BasicMode));
 
-          Assert.IsTrue(this.rightList[0].name.Equals(this.scoreList[0].name));
-          Assert.Equal(this.rightList[0].theScore, this.scoreList[0].theScore);
+          Assert.IsTrue(this.rightList[0].name.Equals(this.scoreList[0].name),
+                          "Error in name comparison!");
+          Assert.AreEqual(this.rightList[0].theScore, this.scoreList[0].theScore, 
+                          "Error in score comparison!");
 
           this.scoreList.ClearItems();
           this.rightList.ClearItems();
@@ -45,8 +47,10 @@ namespace UnitTest.Montanari_Simone
 
           this.rightList.Add(new HighscoreStructure(PLAYER, POINTS, LevelType.SurvivalMode));
 
-          Assert.IsTrue(this.rightList[0].name.Equals(this.scoreList[0].name));
-          Assert.Equal(this.rightList[0].theScore, this.scoreList[0].theScore);
+          Assert.IsTrue(this.rightList[0].name.Equals(this.scoreList[0].name),
+              "Error in name comparison!");
+          Assert.AreEqual(this.rightList[0].theScore, this.scoreList[0].theScore, 
+              "Error in score comparison!");
 
           this.scoreList.ClearItems();
           this.rightList.ClearItems();
@@ -72,8 +76,10 @@ namespace UnitTest.Montanari_Simone
 
           for (int i = 0; i < this.rightList.Count; i += 1)
           { 
-              Assert.IsTrue(this.rightList[i].name.Equals(this.scoreList[i].name));
-              Assert.Equal(this.rightList[i].theScore, this.scoreList[i].theScore);
+              Assert.IsTrue(this.rightList[i].name.Equals(this.scoreList[i].name),
+                                "Error in name comparison!");
+              Assert.AreEqual(this.rightList[i].theScore, this.scoreList[i].theScore, 
+                                "Error in score comparison!");
           }
 
           this.scoreList.ClearItems();
@@ -100,8 +106,10 @@ namespace UnitTest.Montanari_Simone
 
           for (int i = 0; i < this.rightList.Count; i += 1)
           { 
-              Assert.IsTrue(this.rightList[i].name.Equals(this.scoreList[i].name));
-              Assert.Equal(this.rightList[i].theScore, this.scoreList[i].theScore);
+              Assert.IsTrue(this.rightList[i].name.Equals(this.scoreList[i].name),
+                  "Error in name comparison!");
+              Assert.AreEqual(this.rightList[i].theScore, this.scoreList[i].theScore, 
+                  "Error in score comparison!");
           }
 
           this.scoreList.ClearItems();
@@ -127,8 +135,10 @@ namespace UnitTest.Montanari_Simone
               this.rightList.Add(new HighscoreStructure(PLAYER + j, POINTS + j, LevelType.BasicMode));
           }
 
-          Assert.IsFalse(this.scoreList.Count > LIMIT);
-          Assert.Equal(this.rightList.Count, this.scoreList.Count);
+          Assert.IsFalse(this.scoreList.Count > LIMIT,
+                            "There are too much items in the list!");
+          Assert.AreEqual(this.rightList.Count, this.scoreList.Count,
+                            "Error in size list comparison!");
 
           this.scoreList.ClearItems();
           this.rightList.ClearItems();
@@ -153,8 +163,10 @@ namespace UnitTest.Montanari_Simone
               this.rightList.Add(new HighscoreStructure(PLAYER + j, POINTS + j, LevelType.SurvivalMode));
           }
 
-          Assert.IsFalse(this.scoreList.Count > LIMIT);
-          Assert.Equal(this.rightList.Count, this.scoreList.Count);
+          Assert.IsFalse(this.scoreList.Count > LIMIT,
+              "There are too much items in the list!");
+          Assert.AreEqual(this.rightList.Count, this.scoreList.Count,
+              "Error in size list comparison!");
 
           this.scoreList.ClearItems();
           this.rightList.ClearItems();
