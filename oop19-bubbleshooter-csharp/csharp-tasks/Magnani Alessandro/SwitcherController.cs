@@ -15,7 +15,8 @@ namespace csharp_tasks.Magnani_Alessandro
          * 
          * @param bubbles , the list of all {@link Bubble}s.
          */
-        public SwitcherController(List<Bubble> bubbles) {
+        public SwitcherController(List<Bubble> bubbles)
+        {
             this.bubbles = bubbles;
             this.bubbleSwitcher = new BubbleSwitcher(this.bubbles);
             this.SetInitialNumSwitch();
@@ -24,7 +25,8 @@ namespace csharp_tasks.Magnani_Alessandro
         /**
          * Method to recall the switch of the {@link Bubble}s if the switch limit has not been exceeded.
          */
-        public readonly void SwitchControl() {
+        public readonly void SwitchControl()
+        {
             if (!IsSwitchEnd()) {
                 this.IncreasesNumSwitch();
                 this.bubbleSwitcher.SwitchBall();
@@ -35,21 +37,24 @@ namespace csharp_tasks.Magnani_Alessandro
          * Method to set the number of switches already made.
          * @param numSwitch , the number of switches already made.
          */
-        public readonly void SetNumSwitch(double numSwitch) {
+        public void SetNumSwitch(double numSwitch)
+        {
             this.numSwitch = numSwitch;
         }
 
         /**
          * Method to set the initial value of the number of switches already made.
          */
-        public readonly void SetInitialNumSwitch() {
+        public void SetInitialNumSwitch()
+        {
             this.numSwitch = 0;
         }
 
         /**
          * Method to increase the number of switches already made.
          */
-        public readonly void IncreasesNumSwitch() {
+        public void IncreasesNumSwitch()
+        {
             this.numSwitch++;
         }
 
@@ -57,7 +62,8 @@ namespace csharp_tasks.Magnani_Alessandro
          * Method that checks whether the number of switches already made is greater than the possible switches.
          * @return the number of switches already made is greater than the possible switches.
          */
-        public readonly bool IsSwitchEnd() {
+        public bool IsSwitchEnd()
+        {
             return this.numSwitch >= LIMITS_SWITCH;
         }
 
@@ -65,7 +71,8 @@ namespace csharp_tasks.Magnani_Alessandro
          * Method to set the list of all {@link Bubble}s.
          * @param bubbles , the list of all {@link Bubble}s.
          */
-        public readonly void SetBubbles(List<Bubble> bubbles) {
+        public void SetBubbles(List<Bubble> bubbles)
+        {
             this.bubbles = bubbles;
             this.bubbleSwitcher = new BubbleSwitcher(this.bubbles);
         }
@@ -74,7 +81,8 @@ namespace csharp_tasks.Magnani_Alessandro
          * Method to get the number of switches already made.
          * @return the number of switches already made.
          */
-        public readonly double GetNumSwitch() {
+        public double GetNumSwitch()
+        {
            return this.numSwitch;
         }
     }

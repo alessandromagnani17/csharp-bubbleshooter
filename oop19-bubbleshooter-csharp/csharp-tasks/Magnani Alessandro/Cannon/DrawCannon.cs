@@ -1,4 +1,5 @@
-﻿using System;
+﻿using csharp_tasks.Accursi_Giacomo;
+using System;
 using System.Drawing;
 
 namespace csharp_tasks.Magnani_Alessandro.Cannon
@@ -12,7 +13,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
         private readonly Rotate rotation = new Rotate();
         private readonly Cannon cannon;
         private readonly Controller controller;
-        private readonly Point shootingBubblePosition;
+        private readonly Point2D shootingBubblePosition;
         private readonly double shootingBubbleRadius; 
         
         /**
@@ -24,7 +25,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
      * <param name="shootingBubbleRadius">the radius of {@link ShootingBubble}.</param>
      */
     public DrawCannon(AnchorPane pane; readonly Cannon cannon, Controller controller,
-        readonly Point shootingBubblePosition,  double shootingBubbleRadius) 
+        readonly Point2D shootingBubblePosition,  double shootingBubbleRadius) 
         {
         this.cannon = cannon;
         this.controller = controller;

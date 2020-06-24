@@ -1,4 +1,5 @@
-﻿using System;
+﻿using csharp_tasks.Accursi_Giacomo;
+using System;
 using System.Drawing;
 
 namespace HandlerAdapterMouseMoved
@@ -8,8 +9,8 @@ namespace HandlerAdapterMouseMoved
         private readonly Rotate cannonRotation;
         private readonly Rotate lineRotation;
         private readonly DrawHelpLine drawHelpLine;
-        private readonly Point shootingBubblePosition;
-        private Point eventPosition;
+        private readonly Point2D shootingBubblePosition;
+        private Point2D eventPosition;
 
         /**
         * Constructor for a new DrawCannon.
@@ -19,7 +20,7 @@ namespace HandlerAdapterMouseMoved
         * <param name="drawHelpLine">the DrawHelpLine.</param>
         */
         public HandlerAdapterMouseMoved(Rotate cannonRotation, Rotate lineRotation, 
-                 Point shootingBubblePosition, DrawHelpLine drawHelpLine) 
+                 Point2D shootingBubblePosition, DrawHelpLine drawHelpLine) 
         {
             this.cannonRotation = cannonRotation;
             this.lineRotation = lineRotation;
@@ -29,7 +30,7 @@ namespace HandlerAdapterMouseMoved
 
         public void Handle(MouseEvent @event) 
         {
-            this.eventPosition = new Point(@event.getX(), @event.getY());
+            this.eventPosition = new Point2D(@event.getX(), @event.getY());
             this.cannonRotation.SetAngle(PhysicHelper.CalculateAngle(eventPosition, shootingBubblePosition));
             this.lineRotation.SetAngle(PhysicHelper.CalculateAngle(eventPosition, shootingBubblePosition));
             this.checkBounds(eventPosition);
@@ -49,15 +50,15 @@ namespace HandlerAdapterMouseMoved
          * 
          * @param eventPosition position of the mouse.
          */
-        private void CheckBounds(Point eventPosition) 
+        private void CheckBounds(Point2D eventPosition) 
         {
             double angularCoefficient;
             double intercepts;
             bool flag = false;
-            Point startPointFirstLine = new Point(this.drawHelpLine.GetHelpLine().GetStartX(), 
+            Point2D startPointFirstLine = new Point2D(this.drawHelpLine.GetHelpLine().GetStartX(), 
                           this.drawHelpLine.GetHelpLine().GetStartY());
-            Point startPointSecondLine = null;
-            Point endPointSecondLine = null;
+            Point2D startPointSecondLine = null;
+            Point2D endPointSecondLine = null;
 
             angularCoefficient = PhysicHelper.CalculateAngularCoefficient(startPointFirstLine, this.eventPosition);
             intercepts = PhysicHelper.CalculateIntercepts(startPointFirstLine, this.eventPosition);
@@ -69,8 +70,8 @@ namespace HandlerAdapterMouseMoved
             if (this.drawHelpLine.GetHelpBounds().Intersects(this.drawHelpLine.GetLeftBounds()) 
                     && this.drawHelpLine.isHelpSelected()) {
 
-                startPointSecondLine = new Point(0, intercepts);
-                endPointSecondLine = new Point(Settings.GetGuiWidth(),
+                startPointSecondLine = new Point2D(0, intercepts);
+                endPointSecondLine = new Point2D(Settings.GetGuiWidth(),
                         -angularCoefficient * Settings.GetGuiWidth() + intercepts);
 
                 flag = PhysicHelper.AngleTooHigh(eventPosition, startPointFirstLine);
@@ -78,14 +79,14 @@ namespace HandlerAdapterMouseMoved
             } else if (this.drawHelpLine.GetHelpBounds().Intersects(this.drawHelpLine.GetRightBounds()) 
                     && this.drawHelpLine.IsHelpSelected()) {
 
-                startPointSecondLine = new Point(Settings.GetGuiWidth(),
+                startPointSecondLine = new Point2D(Settings.GetGuiWidth(),
                         angularCoefficient * Settings.GetGuiWidth() + intercepts);
-                endPointSecondLine = new Point(this.drawHelpLine.GetHelpLine().GetStartX(), 
-                        startPointFirstLine.GetY() - (startPointFirstLine.GetY() - startPointSecondLine.GetY()) * 2);
+                endPointSecondLine = new Point2D(this.drawHelpLine.GetHelpLine().GetStartX(), 
+                        startPointFirstLine.getY() - (startPointFirstLine.GetY() - startPointSecondLine.GetY()) * 2);
 
                 intercepts = PhysicHelper.CalculateIntercepts(startPointSecondLine, endPointSecondLine);
 
-                endPointSecondLine = new Point(0, -angularCoefficient * 0 + intercepts);
+                endPointSecondLine = new Point2D(0, -angularCoefficient * 0 + intercepts);
 
                 flag = PhysicHelper.AngleTooHigh(eventPosition, startPointFirstLine);
 

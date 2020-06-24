@@ -22,7 +22,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
          * Method to get the {@link ImageView} of the {@link Cannon}.
          * @return the {@link ImageView} of the {@link Cannon}.
          */
-        public readonly ImageView GetCannon() 
+        public ImageView GetCannon() 
         {
             return imageCannon;
         }
@@ -31,7 +31,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
          * Method to get the angle of {@link Cannon} rotation.
          * @return the angle of {@link Cannon}.
          */
-        public readonly double GetAngle() 
+        public double GetAngle() 
         {
             return angle;
         }
@@ -40,7 +40,7 @@ namespace csharp_tasks.Magnani_Alessandro.Cannon
          * Method to set the angle of {@link Cannon} rotation.
          * @param angle , the angle of {@link Cannon}.
          */
-        public readonly void SetAngle(double angle) 
+        public void SetAngle(double angle) 
         {
             this.angle = angle;
         }
