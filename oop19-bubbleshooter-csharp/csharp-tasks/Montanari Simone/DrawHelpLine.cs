@@ -1,3 +1,5 @@
+using csharp_tasks.Accursi_Giacomo;
+
 namespace csharp_tasks.Montanari_Simone
 {
     /// <summary>
@@ -6,24 +8,24 @@ namespace csharp_tasks.Montanari_Simone
     {
 
         private readonly Graphics g;
-        private readonly Point startPointFirstLine;
+        private readonly Point2D startPointFirstLine;
         private HelpLine helpLine { get; }
         private HelpLine boundsLine { get; }
         private readonly Pen borderRight;
         private readonly Pen borderLeft;
         private Rotate rotation { get; }
-        private bool helpSelected { get; }
+        private bool helpSelected { get; set; }
 
          /// <summary>Constructor for a new DrawHelpLine. </summary>
          /// <param name="graphics">Class used to draw the {@link HelpLine} in the form.</param>
          /// <param name="shootingBubblePosition">The position of {@link ShootingBubble}.</param>
-        public DrawHelpLine(Graphics graphics, Point shootingBubblePosition)
+        public DrawHelpLine(Graphics graphics, Point2D shootingBubblePosition)
         {
             this.startPointFirstLine = shootingBubblePosition;
             this.g = graphics;
             this.rotation = new Rotate();
 
-            this.helpLine = new HelpLine(this.startPointFirstLine, new Point(this.startPointFirstLine.X, 0), this.g);
+            this.helpLine = new HelpLine(this.startPointFirstLine, new Point2D(this.startPointFirstLine.X, 0), this.g);
             this.boundsLine = new HelpLine(new Point(0, 0), new Point(0, 0), this.g);
             this.borderRight = new Pen();
             this.borderLeft = new Pen();
@@ -61,14 +63,14 @@ namespace csharp_tasks.Montanari_Simone
         /// passing start point and end point. </summary>
         /// <param name="startPointSecondLine">The start point.</param>
         /// <param name="endPointSecondLine">The end point.</param>
-        public void DrawBoundsLine(Point startPointSecondLine, Point endPointSecondLine) {
+        public void DrawBoundsLine(Point2D startPointSecondLine, Point2D endPointSecondLine) {
             this.g.DrawLine(this.boundsLine, startPointSecondLine.X, startPointSecondLine.Y,
                                       endPointSecondLine.X, endPointSecondLine.Y);
         }
 
         /// <summary>Method used to get the bounds of help line.</summary>
         /// <returns>Return the bounds of help line.</returns>
-        public readonly Bounds GetHelpBounds()
+        public Bounds GetHelpBounds()
         {
             return this.helpLine.line.GetBounds();
         }

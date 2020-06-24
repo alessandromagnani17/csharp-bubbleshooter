@@ -9,7 +9,7 @@ namespace csharp_tasks.Montanari_Simone
     {
 
         private int theScore { get; }
-        private LevelTypes level { get; }
+        LevelType level { get; }
 
         /// <summary>Constructor for a new score specifying the modality.</summary>
         /// <param name="startPoint">The start point.</param>
