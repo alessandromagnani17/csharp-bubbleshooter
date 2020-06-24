@@ -1,7 +1,7 @@
 namespace csharp_tasks.Montanari_Simone
 {
     /// <summary>Class used to create a line using the start and end point given.</summary>
-    class HelpLine 
+    public class HelpLine 
     {
 
         private static readonly double DASH_WIDTH = Settings.GetGuiHeight() / 200;

@@ -4,7 +4,7 @@ namespace csharp_tasks.Montanari_Simone
     /// Class called by {@link ControllerImpl} used to get information about the score.
     /// The informations are taken by calling the {@link GameData}.
     /// </summary>
-    class ScoreManager 
+    public class ScoreManager 
     {
 
         private readonly GameData scoresInfo;
