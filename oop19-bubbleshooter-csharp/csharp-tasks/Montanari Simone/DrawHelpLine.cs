@@ -2,7 +2,7 @@ namespace csharp_tasks.Montanari_Simone
 {
     /// <summary>
     /// Class used for draw the help line if the 'help' CheckBox in {@link GameController} is selected. </summary>
-    class DrawHelpLine 
+    public class DrawHelpLine 
     {
 
         private readonly Graphics g;

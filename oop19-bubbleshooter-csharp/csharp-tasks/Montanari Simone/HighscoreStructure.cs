@@ -5,7 +5,7 @@ namespace csharp_tasks.Montanari_Simone
     /// <summary>
     /// Class which represent a basic score with score and his game modality.
     /// </summary>
-    class HighscoreStructure : Score 
+    public class HighscoreStructure : Score 
     {
         private string Name { get; }
 
