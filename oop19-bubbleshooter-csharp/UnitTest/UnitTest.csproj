@@ -43,7 +43,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Acampora Andrea\Test.cs" />
+        <Compile Include="Acampora Andrea\TestComponent.cs" />
         <Compile Include="Accursi Giacomo\LevelTest.cs" />
         <Compile Include="Magnani Alessandro\Test.cs" />
         <Compile Include="Montanari Simone\Test.cs" />

@@ -1,31 +1,27 @@
 using System;
+using System.Collections.Generic;
+using csharp_tasks.Accursi_Giacomo;
 
 namespace csharp_tasks.Acampora_Andrea
 {
     public interface IBubble
     {
         void Update(double elapsed);
-
-        IComponent Component { get; set; }
         
-        bool IsDestroyed();
-
-        void SetPosition();
+        List<IComponent>Components { get;}
         
-        void SetDirection();
+        Boolean Destroyed { get; set; }
 
-        void SetType(BubbleType type);
+        Point2D Position { get; set; }
+        
+        Point2D Direction { get; set; }
 
-        void Destroy();
+        BubbleType Type { get; set; }
+        
+        double Radius { get; set; }
 
-        void AddComponent(IComponent component);
+        double Width { get; set; }
 
-        double GetRadius();
-
-        double GetWidth();
-
-        double GetHeight();
-
-        BubbleType GetType();
+        double Height { get; set; }
     }
 }

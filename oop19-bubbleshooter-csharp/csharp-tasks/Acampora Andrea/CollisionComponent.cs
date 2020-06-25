@@ -4,7 +4,7 @@ namespace csharp_tasks.Acampora_Andrea
     {
         public CollisionComponent(IBubble container) : base(container)
         {
-            base.Type = ComponentType.CollisionComponent;
+            Type = ComponentType.CollisionComponent;
         }
             
     }

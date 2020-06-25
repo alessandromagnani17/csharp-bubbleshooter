@@ -4,7 +4,7 @@ namespace csharp_tasks.Acampora_Andrea
     {
         public ShootingComponent(IBubble container) : base(container)
         {
-            base.Type = ComponentType.ShootingComponent;
+            Type = ComponentType.ShootingComponent;
         }
             
     }
