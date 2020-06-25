@@ -1,5 +1,6 @@
 using csharp_tasks.Accursi_Giacomo.Level;
 
+
 namespace csharp_tasks.Montanari_Simone
 {
     /// <summary>
@@ -7,7 +8,7 @@ namespace csharp_tasks.Montanari_Simone
     /// </summary>
     public class HighscoreStructure : Score 
     {
-        private string Name { get; }
+        public string Name { get; }
 
         /// <summary>Constructor for a new HighscoreStructure.</summary>
         /// <param name="name">The player name.</param>
