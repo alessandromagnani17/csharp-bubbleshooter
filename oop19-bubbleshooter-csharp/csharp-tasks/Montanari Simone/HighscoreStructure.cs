@@ -6,8 +6,10 @@ namespace csharp_tasks.Montanari_Simone
     /// <summary>
     /// Class which represent a basic score with score and his game modality.
     /// </summary>
-    public class HighscoreStructure : Score 
+    public class HighscoreStructure : Score
     {
+        public string name { get; }
+
         public string Name { get; }
 
         /// <summary>Constructor for a new HighscoreStructure.</summary>
@@ -16,7 +18,7 @@ namespace csharp_tasks.Montanari_Simone
         /// <param name="gameMode">The current game modality.</param>
         public HighscoreStructure(string playerName, int score, LevelType gameMode) : base(score, gameMode)
         {
-            this.Name = playerName;
+            this.name = playerName;
         }
 
     }

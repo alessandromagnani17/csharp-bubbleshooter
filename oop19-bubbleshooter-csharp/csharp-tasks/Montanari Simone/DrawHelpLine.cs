@@ -4,21 +4,21 @@ namespace csharp_tasks.Montanari_Simone
 {
     /// <summary>
     /// Class used for draw the help line if the 'help' CheckBox in {@link GameController} is selected. </summary>
-    public class DrawHelpLine 
+    public class DrawHelpLine
     {
 
         private readonly Graphics g;
         private readonly Point2D startPointFirstLine;
-        private HelpLine helpLine { get; }
+        public HelpLine helpLine { get; }
         private HelpLine boundsLine { get; }
         private readonly Pen borderRight;
         private readonly Pen borderLeft;
         private Rotate rotation { get; }
-        private bool helpSelected { get; set; }
+        public bool helpSelected { get; set; }
 
-         /// <summary>Constructor for a new DrawHelpLine. </summary>
-         /// <param name="graphics">Class used to draw the {@link HelpLine} in the form.</param>
-         /// <param name="shootingBubblePosition">The position of {@link ShootingBubble}.</param>
+        /// <summary>Constructor for a new DrawHelpLine. </summary>
+        /// <param name="graphics">Class used to draw the {@link HelpLine} in the form.</param>
+        /// <param name="shootingBubblePosition">The position of {@link ShootingBubble}.</param>
         public DrawHelpLine(Graphics graphics, Point2D shootingBubblePosition)
         {
             this.startPointFirstLine = shootingBubblePosition;
@@ -63,7 +63,8 @@ namespace csharp_tasks.Montanari_Simone
         /// passing start point and end point. </summary>
         /// <param name="startPointSecondLine">The start point.</param>
         /// <param name="endPointSecondLine">The end point.</param>
-        public void DrawBoundsLine(Point2D startPointSecondLine, Point2D endPointSecondLine) {
+        public void DrawBoundsLine(Point2D startPointSecondLine, Point2D endPointSecondLine)
+        {
             this.g.DrawLine(this.boundsLine, startPointSecondLine.X, startPointSecondLine.Y,
                                       endPointSecondLine.X, endPointSecondLine.Y);
         }

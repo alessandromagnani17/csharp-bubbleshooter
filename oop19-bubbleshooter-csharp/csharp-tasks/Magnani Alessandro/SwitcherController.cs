@@ -27,7 +27,8 @@ namespace csharp_tasks.Magnani_Alessandro
          */
         public void SwitchControl()
         {
-            if (!IsSwitchEnd()) {
+            if (!IsSwitchEnd())
+            {
                 this.IncreasesNumSwitch();
                 this.bubbleSwitcher.SwitchBall();
             }
@@ -83,7 +84,7 @@ namespace csharp_tasks.Magnani_Alessandro
          */
         public double GetNumSwitch()
         {
-           return this.numSwitch;
+            return this.numSwitch;
         }
     }
 }

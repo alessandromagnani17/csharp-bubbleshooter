@@ -1,16 +1,15 @@
 using csharp_tasks.Accursi_Giacomo;
-using System.Drawing;
 
 namespace csharp_tasks.Montanari_Simone
 {
     /// <summary>Class used to create a line using the start and end point given.</summary>
-    public class HelpLine 
+    public class HelpLine
     {
 
         private static readonly double DASH_WIDTH = Settings.GetGuiHeight() / 200;
         private readonly Graphics g;
         public Pen line { get; }
-        
+
         /// <summary>Constructor for a new Line passing the start and end point.</summary>
         /// <param name="startPoint">The start point.</param>
         /// <param name="endPoint">The end point.</param>

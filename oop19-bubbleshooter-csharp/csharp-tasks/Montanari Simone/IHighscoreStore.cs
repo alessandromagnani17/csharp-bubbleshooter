@@ -1,4 +1,7 @@
 using csharp_tasks.Accursi_Giacomo.Level;
+using System.IO;
+using System.Collections.ObjectModel;
+
 using System.Collections.ObjectModel;
 using System.IO;
 
@@ -18,12 +21,12 @@ namespace csharp_tasks.Montanari_Simone
         /// <summary>Method for add a score for a game modality.</summary>
         /// <param name="score">The current {@link HighscoreStructure} to save.</param>
         void AddScore(HighscoreStructure score);
-        
+
         /// <summary>Method to have a list of scores for a specific game modality.</summary>
         /// <param name="gameMode">The game modality which we want the scores.</param>
         /// <returns>the scores for a game modality.</returns>
         ObservableCollection<HighscoreStructure> GetHighscoresForModality(LevelType gameMode);
-        
+
         /// <summary>Method used for clean file.</summary>
         void CleanFile();
     }
