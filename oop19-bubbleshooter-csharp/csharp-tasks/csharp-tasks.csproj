@@ -62,12 +62,19 @@
         <Compile Include="Accursi Giacomo\Level\ILevel.cs" />
         <Compile Include="Accursi Giacomo\Level\LevelType.cs" />
         <Compile Include="Accursi Giacomo\Point2D.cs" />
+        <Compile Include="Magnani Alessandro\Cannon\Cannon.cs" />
+        <Compile Include="Magnani Alessandro\Cannon\DrawCannon.cs" />
+        <Compile Include="Magnani Alessandro\HandlerAdapterMouseMoved.cs" />
+        <Compile Include="Magnani Alessandro\SwitchBubble.cs" />
+        <Compile Include="Magnani Alessandro\SwitcherController.cs" />
+        <Compile Include="Montanari Simone\DrawHelpLine.cs" />
+        <Compile Include="Montanari Simone\HelpLine.cs" />
+        <Compile Include="Montanari Simone\HighscoreStructure.cs" />
+        <Compile Include="Montanari Simone\IHighscoreStore.cs" />
+        <Compile Include="Montanari Simone\Score.cs" />
+        <Compile Include="Montanari Simone\ScoreManager.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Magnani Alessandro" />
-      <Folder Include="Montanari Simone" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

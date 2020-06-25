@@ -45,8 +45,9 @@
     <ItemGroup>
         <Compile Include="Acampora Andrea\TestComponent.cs" />
         <Compile Include="Accursi Giacomo\LevelTest.cs" />
-        <Compile Include="Magnani Alessandro\Test.cs" />
-        <Compile Include="Montanari Simone\Test.cs" />
+        <Compile Include="Magnani Alessandro\TestGameOver.cs" />
+        <Compile Include="Magnani Alessandro\TestSwitchingBubble.cs" />
+        <Compile Include="Montanari Simone\TestHighscore.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -56,7 +57,7 @@
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>
