@@ -12,6 +12,7 @@
         <AssemblyName>UnitTest</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,10 +44,16 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Acampora Andrea\Test.cs" />
-        <Compile Include="Accursi Giacomo\Test.cs" />
+        <Compile Include="Accursi Giacomo\LevelTest.cs" />
         <Compile Include="Magnani Alessandro\Test.cs" />
         <Compile Include="Montanari Simone\Test.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\csharp-tasks\csharp-tasks.csproj">
+        <Project>{78aa49a9-f0c8-4a8b-ab2a-34a09b127427}</Project>
+        <Name>csharp-tasks</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

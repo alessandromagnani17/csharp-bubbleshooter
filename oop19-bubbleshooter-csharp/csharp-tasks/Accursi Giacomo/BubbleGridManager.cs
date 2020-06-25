@@ -7,8 +7,8 @@ namespace csharp_tasks.Accursi_Giacomo
 {
     public class BubbleGridManager
     {
-        private int CreatedRows { get; set; } 
-        private bool OffSetRow { get; set; }
+        public int CreatedRows { get; set; } 
+        public bool OffSetRow { get; set; }
         private readonly ILevel Level;
 
         public BubbleGridManager(ILevel level)

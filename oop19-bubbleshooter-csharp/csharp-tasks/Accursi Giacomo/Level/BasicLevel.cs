@@ -1,12 +1,10 @@
-using System.Threading;
-
 namespace csharp_tasks.Accursi_Giacomo.Level
 {
     public class BasicLevel : AbstractLevel
     {
         private const int BubbleScore = 20;
         private const int WrongShootsBeforeNewRow = 5; 
-        
+
         public BasicLevel()
         {
             this.LevelType = LevelType.BasicMode; 
