@@ -6,13 +6,14 @@ using NUnit.Framework;
 
 namespace UnitTest.Accursi_Giacomo
 {
+    /// <summary>
+    /// Class to test the correct behaviour of the ILevel.
+    /// </summary>
     [TestFixture]
     public class LevelTest
     {
-        private const double Elapsed = 1; 
-        private const double LongElapsed = 20_000; 
-        
-        
+        private const double Elapsed = 1;  
+
         [Test]
         public void TestStartBasicLevel()
         {

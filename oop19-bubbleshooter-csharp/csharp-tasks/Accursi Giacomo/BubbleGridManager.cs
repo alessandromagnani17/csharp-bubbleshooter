@@ -5,12 +5,19 @@ using csharp_tasks.Accursi_Giacomo.Level;
 
 namespace csharp_tasks.Accursi_Giacomo
 {
+    /// <summary>
+    /// Class used to add, remove bubble from bubble grid and create new row of IBubbles.
+    /// </summary>
     public class BubbleGridManager
     {
         public int CreatedRows { get; set; } 
         public bool OffSetRow { get; set; }
         private readonly ILevel Level;
 
+        /// <summary>
+        /// Constructor of {@link BubbleGridManager} used to initialize the ILevel
+        /// </summary>
+        /// <param name="level"> The level of the game. </param>
         public BubbleGridManager(ILevel level)
         {
             this.Level = level;
@@ -18,6 +25,11 @@ namespace csharp_tasks.Accursi_Giacomo
             this.CreatedRows = 0; 
         }
 
+        /// <summary>
+        /// Creates new row on the top of the grid.
+        /// </summary>
+        /// <param name="bubblesPerRow"> Number of Ibubbles in a row</param>
+        /// <returns> New row of Ibubbles. </returns>
         public List<IBubble> CreateNewRow(int bubblesPerRow)
         {
             List<IBubble> newRow = new List<IBubble>();
@@ -34,6 +46,9 @@ namespace csharp_tasks.Accursi_Giacomo
 
         }
 
+        /// <summary>
+        /// Moves all IBubbles on row down to create new one.
+        /// </summary>
         private void MoveDownBubbles()
         {
             foreach (IBubble bubble in this.GetBubbleGrid().AsEnumerable())
@@ -42,6 +57,12 @@ namespace csharp_tasks.Accursi_Giacomo
             }
         }
 
+        /// <summary>
+        /// Creates a new Ibubble and tells the BubbleManager to add it to the game.
+        /// </summary>
+        /// <param name="bubble"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public IBubble AddToGrid(IBubble bubble, Point2D position)
         {
             IBubble bubbleToAdd = this.Level.BubbleFactory.CreateGridBubble(position, bubble.Color); 
@@ -50,7 +71,11 @@ namespace csharp_tasks.Accursi_Giacomo
             this.Level.LoadSwitchBubble();
             return bubbleToAdd; 
         }
-
+        
+        /// <summary>
+        /// Gets all Ibubbles in the grid.
+        /// </summary>
+        /// <returns></returns>
         private List<IBubble> GetBubbleGrid()
         {
             return this.Level.BubblesManager.BubbleGrid; 

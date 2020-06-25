@@ -4,6 +4,9 @@ using csharp_tasks.Acampora_Andrea;
 
 namespace csharp_tasks.Accursi_Giacomo.Level
 {
+    /// <summary>
+    /// Class which contains the main methods of ILevel interface.
+    /// </summary>
     public abstract class AbstractLevel : ILevel
     {
         private const int NumBubblePerRow = 19;
@@ -23,6 +26,9 @@ namespace csharp_tasks.Accursi_Giacomo.Level
         public LevelType LevelType { get; set; }
         private GameOverChecker gameOverChecker; 
 
+        /// <summary>
+        /// Constructor used to initialize all entities of the ILevel.
+        /// </summary>
         public AbstractLevel()
         {
             this.BubblesManager = new BubblesManager();
@@ -59,6 +65,9 @@ namespace csharp_tasks.Accursi_Giacomo.Level
             this.InitBubbles();
         }
 
+        /// <summary>
+        /// Initialize all IBubbles in the game
+        /// </summary>
         private void InitBubbles()
         {
             for (int i = 0; i < NumRows; i++)
@@ -67,6 +76,9 @@ namespace csharp_tasks.Accursi_Giacomo.Level
             }
         }
 
+        /// <summary>
+        /// Creates new row of IBubbles
+        /// </summary>
         private void CreateNewRow()
         {
             this.BubblesManager.AddBubbles(this.BubbleGridHelper.CreateNewRow(NumBubblePerRow));
@@ -106,13 +118,32 @@ namespace csharp_tasks.Accursi_Giacomo.Level
             }
         }
 
+        /// <summary>
+        /// Check if it's game over.
+        /// </summary>
+        /// <returns>True if it's game over, false otherwise. </returns>
         private bool CheckGameOver()
         {
             return this.gameOverChecker.CheckGameOver(); 
         }
 
+        /// <summary>
+        /// Check if it's time to create new row.
+        /// </summary>
+        /// <param name="elapsed"> Time elapsed every gameLoop cycle. </param>
+        /// <returns> True if it's time to create new row, false otherwise. </returns>
         protected abstract bool IsTimeToNewRow(double elapsed);
+       
+        /// <summary>
+        /// Updates the score
+        /// </summary>
+        /// <param name="elapsed"> Time elapsed every gameLoop cycle. </param>
         protected abstract void UpdateScore(double elapsed);
+        
+        /// <summary>
+        /// Check if the player has won.
+        /// </summary>
+        /// <returns> True if is victory. </returns>
         protected abstract bool CheckVictory();
     }
 }
