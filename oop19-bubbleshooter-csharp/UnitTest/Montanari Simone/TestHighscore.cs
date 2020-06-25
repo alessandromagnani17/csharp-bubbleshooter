@@ -7,9 +7,6 @@ using csharp_tasks.Montanari_Simone;
 using csharp_tasks.Accursi_Giacomo.Level;
 using System.Collections.ObjectModel;
 using System.Linq;
-using csharp_tasks.Accursi_Giacomo.Level;
-using csharp_tasks.Montanari_Simone;
-using NUnit.Framework;
 
 namespace UnitTest.Montanari_Simone
 {
